@@ -1,0 +1,63 @@
+.seat-list {
+    display: grid;
+    grid-gap: 10px;
+    grid-auto-columns: 40px;
+    grid-auto-rows: 40px;
+
+    &-item {
+        background: #6de678;
+        width: 40px;
+        height 40px;
+        font-size: 13px;
+        cursor: pointer;
+        border-radius: 3px;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+
+        &.busy {
+            cursor: default;
+            background: #ff3d2e;
+        }
+
+        &.selected {
+            cursor: default;
+            background: #e6da32;
+        }
+    }
+
+    &-col {
+        font-size: 11px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        width: 40px;
+    }
+    &-row {
+        font-size: 11px;
+        text-align: right;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 40px;
+    }
+}
+
+.page {
+    display: flex;
+    padding: 15px;
+    flex-wrap: wrap;
+    max-width: 850px;
+    margin: 0 auto;
+
+    &-left {
+        flex: 1 1 auto;
+    }
+    &-right {
+        flex: 1 1 0;
+        margin: 20px;
+        min-width: 240px;
+    }
+}

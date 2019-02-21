@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">Касса кинотеатра</mat-toolbar>
+
+<div class="page">
+  <div class="page-left">
+
+    <div class="seat-list">
+      <div
+        class="seat-list-row"
+        [ngStyle]="{'grid-column': 1, 'grid-row': i + 1}"
+        *ngFor="let i of range(ROWS)"
+      >Ряд {{ i }}</div>
+      <div
+        class="seat-list-col"
+        [ngStyle]="{'grid-column': i + 1, 'grid-row': 1 }"
+        *ngFor="let i of range(COLS)"
+      >Место {{ i }}</div>
+
+      <div
+        *ngFor="let item of seats"
+        class="seat-list-item"
+        [ngStyle]="{'grid-column': item.seat + 1, 'grid-row': item.row + 1}"
+        [ngClass]="{'busy': item.busy, 'selected': item.selected && !item.busy}"
+        (click)='!item.busy && onSelectSeat(item)'
+      >
+        {{ item.price }}&thinsp;&#8381;
+      </div>
+    </div>
+  </div>
+
+  <div class="page-right">
+      <p><b>Вы выбрали места:</b> {{ selectedText }}</p>
+      <p><b>Общая стоимость:</b> {{ total }}&thinsp;&#8381;</p>     
+
+      <div class="button-row">
+        <button mat-flat-button color="primary" (click)="onDoneSelectedSeats()"><mat-icon>done</mat-icon> Купить</button>
+        <button mat-flat-button color="warn" (click)="onCancelSelectedSeats()"><mat-icon>close</mat-icon> Отмена</button>
+      </div>
+  </div>
+</div>
+
